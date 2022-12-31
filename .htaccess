@@ -1,0 +1,7 @@
+# https://htaccesscheatsheet.com/#serve-all-requests-with-one-php-file
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^?]*)$ /index.php [NC,L,QSA]
