@@ -6,6 +6,7 @@
 // + keep original Host header
 // + strip invalid content length in reply
 // + toggle ssl cert/sni verification
+// + do not follow location headers
 
 $proxied_url = 'https://example.com';
 $proxy_timeout = 5;
@@ -20,7 +21,6 @@ function reformat($headers) {
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_TIMEOUT, $proxy_timeout);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $_SERVER['REQUEST_METHOD']);
 curl_setopt($ch, CURLOPT_URL, $proxied_url . $_SERVER['REQUEST_URI']);
 if (!$ssl_verify) {
